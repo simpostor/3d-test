@@ -11,9 +11,76 @@
       canvas {
         display: block;
       }
+      /* Tutorial Button Style */
+      #tutorialButton {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      /* Tutorial Overlay Style */
+      #tutorialOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: none;
+        z-index: 1000;
+        color: white;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+      }
+      #tutorialOverlay button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
+    <!-- Tutorial Button -->
+    <button id="tutorialButton">Tutorial</button>
+
+    <!-- Tutorial Overlay -->
+    <div id="tutorialOverlay">
+      <div>
+        <p>Use WASD or Arrow keys to move,<br>and Space to jump.</p>
+        <button id="closeOverlay">Close</button>
+      </div>
+    </div>
+
+    <!-- Our Three.js Module -->
     <script type="module" src="/src/main.js"></script>
+
+    <!-- Tutorial Overlay Script -->
+    <script>
+      const tutorialButton = document.getElementById('tutorialButton');
+      const tutorialOverlay = document.getElementById('tutorialOverlay');
+      const closeOverlay = document.getElementById('closeOverlay');
+
+      tutorialButton.addEventListener('click', () => {
+        tutorialOverlay.style.display = 'flex';
+      });
+
+      closeOverlay.addEventListener('click', () => {
+        tutorialOverlay.style.display = 'none';
+      });
+    </script>
   </body>
 </html>
